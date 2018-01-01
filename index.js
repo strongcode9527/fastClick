@@ -7,22 +7,16 @@
 
 
     function touchStart(e) {
-      // // 点击最外层dom 返回，不执行任何操作。
-      // if(e.target === el) {
-      //   e.preventDefault()
-      //   return
-      // }
-      console.log('start', e.touches, e.target)
       touchstartX = e.touches[0].clientX
       touchstartY = e.touches[0].clientY
     }
 
     function touchEnd(e) {
       var dom = e.target
-      console.log('end', e.target, e.changedTouches)
+
       touchendX = e.changedTouches[0].clientX
       touchendY = e.changedTouches[0].clientY
-      if(hasMove) {
+      if(hasMove()) { 
         return
       }
       // dom.click()
