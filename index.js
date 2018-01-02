@@ -12,18 +12,33 @@
     }
 
     function touchEnd(e) {
-      var dom = e.target
+      var dom = e.target,
+          tagName = e.target.tagName,
+          type = e.target.type
 
       touchendX = e.changedTouches[0].clientX
       touchendY = e.changedTouches[0].clientY
-      if(hasMove()) { 
+
+      if(hasMove()) {
         return
       }
-      // dom.click()
+
+      if(tagName === 'INPUT' || tagName === 'TEXTAREA') {
+        if(tagName === 'INPUT' || tagName === 'TEXTAREA') {
+          dom.focus()
+        }
+      }
+
       e.preventDefault()
+
       var event = document.createEvent('Event')
       event.initEvent('click', true, false)
+      event.forwardedTouchEvent = true
       dom.dispatchEvent(event)
+    } 
+
+    function onClick(e) {
+      console.log('click', e)
     }
 
     function hasMove() {
@@ -32,7 +47,7 @@
 
     el.addEventListener('touchstart',touchStart)
     el.addEventListener('touchend',touchEnd)
-
+    // el.addEventListener('click', onClick)
   }
 
 
