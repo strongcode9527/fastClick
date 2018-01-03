@@ -31,6 +31,11 @@
 
       e.preventDefault()
 
+      // 对于点击其他地方后，input框失去焦点
+      if (document.activeElement && document.activeElement !== dom) {
+        document.activeElement.blur();
+      }
+      
       var event = document.createEvent('Event')
       event.initEvent('click', true, false)
       event.forwardedTouchEvent = true

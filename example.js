@@ -3,14 +3,6 @@ fastClick(document.body)
 var div = document.getElementById('div')
 var input = document.getElementById('input')
 
-document.body.addEventListener('click', function() {
-  console.log('body click')
-})
-
-document.body.addEventListener('touchstart', function() {
-  console.log('body start')
-})
-
 
 div.addEventListener('click', function() {
   console.log('div clicked')
